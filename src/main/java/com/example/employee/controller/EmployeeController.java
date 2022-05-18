@@ -18,6 +18,7 @@ public class EmployeeController {
 
     @RequestMapping(value="/employees", method=RequestMethod.POST)
     public Employee createEmployee(@RequestBody Employee emp) {
+        System.out.println();
         return empService.createEmployee(emp);
     }
 
@@ -41,13 +42,13 @@ public class EmployeeController {
         empService.deleteEmployee(id);
     }
 
-    @PutMapping(value="/employees/{empId}/{depId}")
-    public void addDepartment(@PathVariable(value = "empId") Long empId, @PathVariable(value = "depId") Long depId) {
-        empService.addDepartment(empId, depId);
-    }
-
-    @DeleteMapping(value="/employees/{empId}/{depId}")
-    public void deleteDepartment(@PathVariable(value = "empId") Long empId, @PathVariable(value = "depId") Long depId) {
-        empService.deleteDepartment(empId, depId);
-    }
+//    @PutMapping(value="/employees/{empId}/{depId}")
+//    public void addDepartment(@PathVariable(value = "empId") Long empId, @PathVariable(value = "depId") Long depId) {
+//        empService.addDepartment(empId, depId);
+//    }
+//
+//    @DeleteMapping(value="/employees/{empId}/{depId}")
+//    public void deleteDepartment(@PathVariable(value = "empId") Long empId, @PathVariable(value = "depId") Long depId) {
+//        empService.deleteDepartment(empId, depId);
+//    }
 }

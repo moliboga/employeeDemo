@@ -21,15 +21,6 @@ public class Department {
     @Column(name="loc_id")
     private Long locationId;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "departments")
-    @JsonIgnore
-    private Set<Employee> employees = new HashSet<>();
-
     public Long getId() {
         return id;
     }

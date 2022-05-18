@@ -40,6 +40,14 @@ public class Employee {
         }
     }
 
+    public Set<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Set<Department> departments) {
+        this.departments = departments;
+    }
+
     public Long getId() {
         return id;
     }
