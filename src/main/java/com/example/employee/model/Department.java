@@ -21,6 +21,9 @@ public class Department {
     @Column(name="loc_id")
     private Long locationId;
 
+    @ManyToMany(mappedBy = "departments", cascade = { CascadeType.MERGE })
+    private Set<Employee> employees = new HashSet<>();
+
     public Long getId() {
         return id;
     }
