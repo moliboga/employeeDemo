@@ -29,7 +29,7 @@ public class DepartmentController {
     }
 
     @PutMapping(value="/departments/{depId}")
-    public Department readDepartments(@PathVariable(value = "depId") Long id, @RequestBody Department depDetails) {
+    public Department updateDepartments(@PathVariable(value = "depId") Long id, @RequestBody Department depDetails) {
         return depService.updateDepartment(id, depDetails);
     }
 

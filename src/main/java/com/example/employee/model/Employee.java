@@ -30,16 +30,6 @@ public class Employee {
     )
     Set<Department> departments = new HashSet<>();
 
-    public void addDepartment(Department department) {
-        this.departments.add(department);
-    }
-
-    public void deleteDepartment(Department department) {
-        if (this.departments.contains(department)){
-            this.departments.remove(department);
-        }
-    }
-
     public Set<Department> getDepartments() {
         return departments;
     }

@@ -20,7 +20,6 @@ public class EmployeeService {
 
     // CREATE
     public Employee createEmployee(Employee emp) {
-
         return empRepository.save(emp);
     }
 
@@ -44,23 +43,7 @@ public class EmployeeService {
         emp.setFirstName(employeeDetails.getFirstName());
         emp.setLastName(employeeDetails.getLastName());
         emp.setEmailId(employeeDetails.getEmailId());
-
-        return empRepository.save(emp);
-    }
-
-    public Employee addDepartment(Long empId, Long depId) {
-        Employee emp = empRepository.findById(empId).get();
-        Department dep = depRepository.findById(depId).get();
-        emp.addDepartment(dep);
-
-        return empRepository.save(emp);
-    }
-
-    public Employee deleteDepartment(Long empId, Long depId) {
-        Employee emp = empRepository.findById(empId).get();
-        Department dep = depRepository.findById(depId).get();
-        emp.deleteDepartment(dep);
-
+        emp.setDepartments(employeeDetails.getDepartments());
         return empRepository.save(emp);
     }
 }

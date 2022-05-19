@@ -38,7 +38,6 @@ public class DepartmentService {
         dep.setId(departmentDetails.getId());
         dep.setDepartmentName(departmentDetails.getDepartmentName());
         dep.setLocationId(departmentDetails.getLocationId());
-
         return depRepository.save(dep);
     }
 }

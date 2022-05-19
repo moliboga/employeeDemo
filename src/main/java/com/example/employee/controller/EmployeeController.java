@@ -2,9 +2,9 @@ package com.example.employee.controller;
 
 import java.util.List;
 
-import com.example.employee.model.Department;
+import com.example.employee.dto.EmployeeDto;
+import com.example.employee.dto.EmployeeMapping;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.employee.model.Employee;
@@ -15,40 +15,31 @@ import com.example.employee.service.EmployeeService;
 public class EmployeeController {
     @Autowired
     EmployeeService empService;
+    @Autowired
+    EmployeeMapping employeeMapping;
 
-    @RequestMapping(value="/employees", method=RequestMethod.POST)
-    public Employee createEmployee(@RequestBody Employee emp) {
-        System.out.println();
-        return empService.createEmployee(emp);
+    @PostMapping(value="/employees")
+    public Employee createEmployee(@RequestBody EmployeeDto empDto) {
+        return empService.createEmployee(employeeMapping.mapDtoToEmployee(empDto));
     }
 
-    @RequestMapping(value="/employees", method=RequestMethod.GET)
+    @GetMapping(value="/employees")
     public List<Employee> readEmployees() {
         return empService.getEmployees();
     }
 
-    @RequestMapping(value="/employees/{empId}", method=RequestMethod.GET)
+    @GetMapping(value="/employees/{empId}")
     public Employee readEmployees(@PathVariable(value = "empId") Long id) {
         return empService.getEmployee(id);
     }
 
-    @RequestMapping(value="/employees/{empId}", method=RequestMethod.PUT)
-    public Employee readEmployees(@PathVariable(value = "empId") Long id, @RequestBody Employee empDetails) {
-        return empService.updateEmployee(id, empDetails);
+    @PutMapping(value="/employees/{empId}")
+    public Employee updateEmployees(@PathVariable(value = "empId") Long id, @RequestBody EmployeeDto empDto) {
+        return empService.updateEmployee(id, employeeMapping.mapDtoToEmployee(empDto));
     }
 
-    @RequestMapping(value="/employees/{empId}", method=RequestMethod.DELETE)
+    @DeleteMapping(value="/employees/{empId}")
     public void deleteEmployees(@PathVariable(value = "empId") Long id) {
         empService.deleteEmployee(id);
     }
-
-//    @PutMapping(value="/employees/{empId}/{depId}")
-//    public void addDepartment(@PathVariable(value = "empId") Long empId, @PathVariable(value = "depId") Long depId) {
-//        empService.addDepartment(empId, depId);
-//    }
-//
-//    @DeleteMapping(value="/employees/{empId}/{depId}")
-//    public void deleteDepartment(@PathVariable(value = "empId") Long empId, @PathVariable(value = "depId") Long depId) {
-//        empService.deleteDepartment(empId, depId);
-//    }
 }
