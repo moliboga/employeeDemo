@@ -35,7 +35,6 @@ public class DepartmentService {
     // UPDATE
     public Department updateDepartment(Long depId, Department departmentDetails) {
         Department dep = depRepository.findById(depId).get();
-        dep.setId(departmentDetails.getId());
         dep.setDepartmentName(departmentDetails.getDepartmentName());
         dep.setLocationId(departmentDetails.getLocationId());
         return depRepository.save(dep);

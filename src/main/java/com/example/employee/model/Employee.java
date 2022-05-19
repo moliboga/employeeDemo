@@ -22,7 +22,7 @@ public class Employee {
     @Column(name="email_id")
     private String emailId;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = { CascadeType.MERGE })
     @JoinTable(
             name = "Employee_Department",
             joinColumns = { @JoinColumn(name = "emp_id") },

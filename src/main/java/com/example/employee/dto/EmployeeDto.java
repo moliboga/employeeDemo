@@ -1,6 +1,5 @@
 package com.example.employee.dto;
 
-import com.example.employee.model.Department;
 import lombok.Data;
 
 import java.util.Set;
