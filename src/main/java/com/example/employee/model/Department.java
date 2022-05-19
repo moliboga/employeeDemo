@@ -24,6 +24,11 @@ public class Department {
     @ManyToMany(mappedBy = "departments", cascade = { CascadeType.MERGE })
     private Set<Employee> employees = new HashSet<>();
 
+    @PreRemove
+    private void removeDepartmentsFromEmployees() {
+        employees.forEach(e -> e.getDepartments().remove(this));
+    }
+
     public Long getId() {
         return id;
     }
